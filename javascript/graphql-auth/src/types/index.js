@@ -4,4 +4,5 @@ module.exports = {
   ...require('./Post'),
   ...require('./Query'),
   ...require('./User'),
+  ...require('./Profile')
 }

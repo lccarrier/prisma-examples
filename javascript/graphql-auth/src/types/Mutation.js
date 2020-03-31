@@ -95,6 +95,24 @@ const Mutation = mutationType({
         })
       },
     })
+
+    t.field('createProfile', {
+      type: 'Profile',
+      args: {
+        bio: stringArg(),
+      },
+      resolve: (parent, { title, content }, ctx) => {
+        const userId = getUserId(ctx)
+        return ctx.prisma.profile.create({
+          data: {
+            bio,
+            author: { connect: { id: Number(userId) } },
+          },
+        })
+      },
+    })
+
+    
   },
 })
 

@@ -62,6 +62,20 @@ const Query = queryType({
         })
       },
     })
+
+    t.field('profile', {
+      type: 'Profile',
+      nullable: true,
+      args: { id: idArg() },
+      resolve: (parent, { id }, ctx) => {
+        return ctx.prisma.profile.findOne({
+          where: {
+            id: Number(id),
+          },
+        })
+      },
+    })
+
   },
 })
 
